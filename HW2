@@ -1,0 +1,24 @@
+#1 загрузка данных
+import numpy as np
+import pandas as pd
+import psycopg2
+import getpass
+import datetime
+conn=psycopg2.connect(user=a, 
+                      database=b, 
+                      host=c,
+                      port=d,
+                      password=getpass.getpass('Insert password'))
+# check parameters
+ host='localhost',
+                      port='5432',
+                      password=getpass.getpass('Insert password: ')
+print(conn.get_dsn_parameters())
+
+
+#2 импорт из sql
+query="SELECT * FROM bond_description_task  WHERE \"Status\"='В обращении' AND \"CouponType\"='Постоянный' OR \"CouponType\"='Дисконт' OR \"RateTypeNameRus_NRD\"='Нулевой';"
+data = pd.read_sql_query(query, conn) 
+
+#3
+Def my_fun #не получилось сделать
